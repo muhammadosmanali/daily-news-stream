@@ -1,0 +1,8 @@
+.mod-img {
+  object-fit: contain;
+}
+
+.mod-img1 {
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+}

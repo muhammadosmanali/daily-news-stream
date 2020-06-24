@@ -1,0 +1,35 @@
+<br>
+<div class="tile is-ancestor detail">
+  <div class="tile is-12">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">{{newsDetail[1].newsSubject}}</p>
+        <p class="subtitle">{{newsDetail[1].date}}</p>
+        <p class="subtitle">views: {{newsDetail[1].views}}</p>
+        <p class="subtitle">Category: {{newsDetail[1].category}}</p>
+        <figure class="image is-16by9 back">
+          <img class="mod-img1"  src="{{newsDetail[1].ImagePath}}">
+          <img class="mod-img"  src="{{newsDetail[1].ImagePath}}">
+
+        </figure>
+        <div class="content" style="text-align: left;" *ngIf="newsDetail[1].language == 'English'">
+          <p class="mod-con">{{newsDetail[1].newsDetail1}}</p>
+          <br>
+          <p class="mod-con">{{newsDetail[1].newsDetail2}}</p>
+          <br>
+          <p class="mod-con">{{newsDetail[1].newsDetail3}}</p>
+        </div>
+
+        <div class="content" style="text-align: right;" *ngIf="newsDetail[1].language == 'Urdu'">
+          <p class="mod-con">{{newsDetail[1].newsDetail1}}</p>
+          <br>
+          <p class="mod-con">{{newsDetail[1].newsDetail2}}</p>
+          <br>
+          <p class="mod-con">{{newsDetail[1].newsDetail3}}</p>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</div>
+<br>

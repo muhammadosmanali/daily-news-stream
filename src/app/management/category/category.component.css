@@ -1,0 +1,29 @@
+.detail {
+  margin: 0px 20px;
+}
+.content {
+  margin-top: 30px !important;
+}
+
+
+
+.notification {
+  padding: 7px !important;
+}
+
+.badge1 {
+  position:relative;
+}
+.badge1[data-badge]:after {
+  content:attr(data-badge);
+  position:absolute;
+  top:-14px;
+  right:-10px;
+  font-size:.7em;
+  background:red;
+  color:white;
+  width:40px;height:18px;
+  text-align:center;
+  line-height:18px;
+  border-radius:10%;
+}

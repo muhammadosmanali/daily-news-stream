@@ -1,0 +1,20 @@
+<div class="tabs is-centered is-boxed" style="margin-top: 10px;">
+  <ul>
+    <li [routerLinkActive]="'is-active'">
+      <a [routerLink]="'/management/create-news'">
+        <span>Create News</span>
+      </a>
+    </li>
+    <li [routerLinkActive]="'is-active'">
+      <a [routerLink]="'/management/news-list'">
+        <span>News List</span>
+      </a>
+    </li>
+    <li [routerLinkActive]="'is-active'">
+      <a [routerLink]="'/management/category'">
+        <span>Category</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,166 @@
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title main">COVID-19 Cases in {{ country }}</h1>
+      <div
+        class="dropdown"
+        (click)="onDropdown()"
+        [ngClass]="{ 'is-active': isActive }"
+      >
+        <div class="dropdown-trigger">
+          <button
+            class="button"
+            aria-haspopup="true"
+            aria-controls="dropdown-menu"
+          >
+            <span>Selected Country ({{ country }})</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i> </span
+            >&nbsp;
+            <progress
+              *ngIf="isLoading"
+              class="progress is-small is-primary"
+              max="200"
+              >45%</progress
+            >
+          </button>
+        </div>
+
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a
+              style="cursor: pointer;"
+              class="dropdown-item"
+              *ngFor="let item of countryList"
+              (click)="onSelectCountry(item)"
+            >
+              {{ item }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<br />
+<div style="text-align: center;" *ngIf="isLoading">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div class="tile is-ancestor mains" *ngIf="!isLoading">
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-primary">
+      <div class="content">
+        <p class="title">TOTAL PATIENTS</p>
+        <p class="subtitle" style="margin-top: 90px; font-size: 40px;" >{{cases}}</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-success">
+          <p class="title">RECOVERED</p>
+          <p class="subtitle">{{recovered}}</p>
+        </article>
+        <article class="tile is-child notification is-warning">
+          <p class="title">CRIRICAL</p>
+          <p class="subtitle">{{critical}}</p>
+        </article>
+      </div>
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-danger">
+          <p class="title">DEATHS</p>
+          <p class="subtitle">{{deaths}}</p>
+        </article>
+        <article class="tile is-child notification is-warning">
+          <p class="title">ACTIVE</p>
+          <p class="subtitle">{{active}}</p>
+        </article>
+      </div>
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-danger">
+          <p class="title">TODAY CASES</p>
+          <p class="subtitle">{{todayCases}}</p>
+        </article>
+        <article class="tile is-child notification is-danger">
+          <p class="title">TODAY DEATHS</p>
+          <p class="subtitle">{{todayDeaths}}</p>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-success">
+        <p class="title">TOTAL TESTS</p>
+        <p class="subtitle">{{totalTests == 0 ? 'Not Specified' : totalTests}}</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </article>
+    </div>
+  </div>
+
+</div>
+
+<!--
+  <div class="tile is-ancestor" style="margin: auto;">
+    <div class="tile is-parent">
+      <article class="tile is-child box notification is-primary animated slideInLeft">
+        <p class="title">Total</p>
+        <p class="subtitle">{{ cases }}</p>
+      </article>
+    </div>
+    <div class="tile is-parent is-dark">
+      <article class="tile is-child box notification is-success animated slideInLeft">
+        <p class="title">Recovered</p>
+        <p class="subtitle">{{ recovered }}</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box notification is-warning animated zoomIn">
+        <p class="title">Critical</p>
+        <p class="subtitle">{{ critical }}</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box notification is-danger animated zoomIn">
+        <p class="title">Deaths</p>
+        <p class="subtitle">{{ deaths }}</p>
+      </article>
+    </div>
+
+    <div class="tile is-parent">
+      <article class="tile is-child box notification is-info animated zoomIn">
+        <p class="title">Active</p>
+        <p class="subtitle">{{ active }}</p>
+      </article>
+    </div>
+    <div class="tile is-parent is-dark">
+      <article
+        class="tile is-child box notification is-warning animated zoomIn"
+      >
+        <p class="title">Today Cases</p>
+        <p class="subtitle">{{ todayCases }}</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article
+        class="tile is-child box notification is-danger animated slideInRight"
+      >
+        <p class="title">Today Deaths</p>
+        <p class="subtitle">{{ todayDeaths }}</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article
+        class="tile is-child box notification is-success animated slideInRight"
+      >
+        <p class="title">Total Tests</p>
+        <p class="subtitle">{{ totalTests }}</p>
+      </article>
+    </div>
+  </div> -->

@@ -1,0 +1,40 @@
+
+
+.dropdown-content {
+  height: 250px;
+  overflow: scroll;
+}
+
+.title {
+  font-size: medium !important;
+}
+
+.main {
+  font-size: 30px !important;
+}
+
+.notification {
+  padding: 10px !important;
+  text-align: center;
+}
+
+.is-parent {
+  padding: 5px !important;
+}
+
+.heading {
+  font-size: 20px;
+}
+
+.title {
+  font-size: 25px !important;
+}
+
+.whole {
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.mains {
+  margin: 0px 20px;
+}

@@ -1,0 +1,224 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title">{{editMode ? 'Edit News' : 'Create New News'}}</h1>
+    <h2 class="subtitle">
+      {{editMode ? 'Change the records' : 'Fill the news form'}}
+    </h2>
+  </div>
+  <br />
+  <hr />
+  <br />
+  <form
+    #f="ngForm"
+    (ngSubmit)="onSubmit()"
+    style="margin-right: 120px;"
+  >
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Upload | Enter URL</label>
+      </div>
+      <div class="field-body">
+        <div class="file has-name">
+          <label class="file-label">
+            <input
+              class="file-input"
+              type="file"
+              (change)="onFileChange($event)"
+              name="resume"
+            />
+            <span class="file-cta">
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+            <span class="file-name" *ngIf="fileName">
+              {{ fileName }}
+            </span>
+          </label>
+        </div>
+        &nbsp;
+        <div class="field">
+          <p class="control is-expanded has-icons-left has-icons-right">
+            <input
+              class="input"
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              [(ngModel)]="imageUrl"
+              placeholder="Image URL"
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label required">Categories</label>
+      </div>
+      <div class="field-body">
+        <div class="field is-narrow">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select id="category" name="category" [(ngModel)]="category" required >
+                <option *ngFor="let item of categoryList">{{ item[1].category }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label required">Language</label>
+      </div>
+      <div class="field-body">
+        <div class="field is-narrow">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select id="language" name="language" [(ngModel)]="language">
+                <option>Urdu</option>
+                <option>English</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label required">Select Date</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input
+              class="date-time"
+              type="datetime-local"
+              required
+              id="date"
+              [(ngModel)]="date"
+              name="date"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label required">News Subject</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="newsSubject"
+              name="newsSubject"
+              [(ngModel)]="newsSubject"
+              required
+              placeholder=""
+            />
+          </div>
+          <!-- <p class="help is-danger">
+            This field is required
+          </p> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label required">News Detail #1</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Enter News Detail"
+              id="newsDetail1"
+              name="newsDetail1"
+              [(ngModel)]="newsD1"
+              required
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label required">News Detail #2</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Enter News Detail"
+              id="newsDetail2"
+              name="newsDetail2"
+              [(ngModel)]="newsD2"
+              required
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">News Detail #3</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Enter News Detail"
+              id="newsDetail3"
+              name="newsDetail3"
+              [(ngModel)]="newsD3"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="field is-horizontal" *ngIf="!isLoading">
+      <div class="field-label">
+        <!-- Left empty for spacing -->
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary" [disabled]="!f.valid">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div *ngIf="status">
+    <br>
+    <div class="notification is-success" style="text-align: center;">
+      <button class="delete" (click)="close()"></button>
+      {{status}}
+    </div>
+  </div>
+</section>

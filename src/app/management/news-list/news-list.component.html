@@ -1,0 +1,47 @@
+
+
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">
+      News List
+      <div class="tooltip">
+        <img
+        (click)="onRefresh()"
+        class="redo-alt"
+        data-tooltip="Refresh Data"
+        src="assets/icons/redo-alt-solid.svg"
+      />
+      <span class="tooltiptext">
+        Refresh Page
+      </span>
+      </div>
+    </h1>
+    <br />
+    <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="columns is-multiline" *ngIf="!isLoading">
+      <div
+        class="column is-one-quarter"
+        *ngFor="
+          let item of news
+            | paginate
+              : {
+                  id: 'listing-pagination',
+                  itemsPerPage: 12,
+                  currentPage: page
+                }
+        "
+      >
+        <app-news-item [newsItem]="item" ></app-news-item>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <pagination-controls
+        id="listing-pagination"
+        (pageChange)="page = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+</section>

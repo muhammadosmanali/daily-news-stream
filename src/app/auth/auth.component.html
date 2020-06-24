@@ -1,0 +1,78 @@
+<section class="section modify-section">
+  <div class="container">
+    <div class="notification is-danger" *ngIf="error">
+      <button class="delete" (click)="onDeleteNot()"></button>
+      {{error}}
+    </div>
+    <h1 class="title">Login</h1>
+    <h2 class="subtitle">
+      using Credentials
+    </h2>
+    <div class="columns">
+      <div class="column"></div>
+      <div class="column">
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input
+                class="input"
+                type="email"
+                placeholder="Enter Email"
+                id="email"
+                ngModel
+                required
+                email
+                name="email"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input
+                class="input"
+                type="password"
+                placeholder="Enter Password"
+                ngModel
+                name="password"
+                required
+                minlength="6"
+              />
+            </div>
+          </div>
+
+          <div class="field" *ngIf="!isLoginMode">
+            <label class="label">Confirm Password</label>
+            <div class="control">
+              <input
+                class="input"
+                type="password"
+                placeholder="Confirm Password"
+                required
+              />
+            </div>
+          </div>
+          <br />
+          <div>
+            <div *ngIf="isLoading" style="text-align: center;">
+              <app-loading-spinner></app-loading-spinner>
+            </div>
+            <div *ngIf="!isLoading">
+              <button class="button is-primary" [disabled]="!authForm.valid">
+                {{ isLoginMode ? "Login" : "Register" }}</button
+              >&nbsp;
+              <button  class="button is-link" (click)="onSwitch()">
+                Switch to {{ isLoginMode ? "Register" : "Login" }}
+              </button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="column"></div>
+    </div>
+  </div>
+</section>

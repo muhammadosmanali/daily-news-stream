@@ -1,0 +1,31 @@
+<section class="section color">
+  <div class="container">
+    <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div *ngIf="newsListByCategory.length == 0 && !isLoading" data-aos="fade-left">
+      <h1 style="text-align: center; font-size: 24px;">Sorry, No News found of {{currentCategory}} category.</h1>
+    </div>
+    <div *ngIf="newsListByCategory.length > 0 && !isLoading">
+      <div class="columns is-multiline">
+        <div class="column is-one-quarter" *ngFor="let item of newsListByCategory" (click)="onNewsClick(item[0])">
+          <div class="card modify-card" data-aos="fade-left">
+            <div class="card-image">
+              <figure class="image is-3by2">
+                <app-image-view [type]="'small'" [imageSrc]="item[1].ImagePath"  [loadingSrc]="'assets/svg/loading.svg'"></app-image-view>
+              </figure>
+            </div>
+            <div class="card-content modify-card-content">
+              <div class="content">
+                {{ item[1].newsSubject }}
+                <br />
+                <time datetime="2016-1-1">{{ item[1].date }}</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

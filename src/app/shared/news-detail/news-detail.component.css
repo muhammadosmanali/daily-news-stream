@@ -1,0 +1,46 @@
+.detail {
+  margin:auto;
+}
+
+.subtitle {
+  margin-top: 5px !important;
+}
+
+.mod-img {
+  object-fit: contain;
+}
+
+.mod-img1 {
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+}
+
+.content {
+  margin-top: 30px !important;
+}
+
+.mod-en {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+.mod-urdu {
+  font-size: x-large;
+  letter-spacing: 1px;
+}
+
+.date {
+  font-size: 15px;
+  margin-top: -15px !important;
+}
+
+.dates {
+  font-size: 15px;
+  text-align: right;
+}
+.urdu {
+  font-family: 'xb-tabriz';
+  font-weight: bolder;
+}

@@ -1,0 +1,13 @@
+.required:after {
+  content: " *";
+  color: rgba(223, 14, 14, 0.521);
+}
+
+.date-time {
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: calc(0.75em - 1px);
+  padding-right: calc(0.75em - 1px);
+  padding-top: calc(0.5em - 1px);
+}

@@ -1,0 +1,27 @@
+<div *ngIf="type === 'small'">
+  <img [hidden]="!imageLoading" [src]="loadingSrc" alt="loading" />
+  <img
+    [hidden]="imageLoading"
+    [src]="imageSrc"
+    (load)="onImageLoad()"
+    alt="News Image"
+  />
+</div>
+
+<div *ngIf="type === 'large'">
+  <img [hidden]="!imageLoading" [src]="loadingSrc" alt="loading" />
+  <img
+    class="mod-img1"
+    [hidden]="imageLoading"
+    [src]="imageSrc"
+    (load)="onImageLoad()"
+    alt="News Image"
+  />
+  <img
+    class="mod-img"
+    [hidden]="imageLoading"
+    [src]="imageSrc"
+    (load)="onImageLoad()"
+    alt="News Image"
+  />
+</div>

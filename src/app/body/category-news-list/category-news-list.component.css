@@ -1,0 +1,27 @@
+
+.post-size {
+  width: 300px;
+  height: 300px;
+}
+
+
+.modify-card {
+  background-color: transparent !important;
+  box-shadow: none;
+  cursor: pointer;
+
+}
+
+img {
+  border-radius: 5px;
+}
+
+.modify-card-content {
+  padding: 5px 0px;
+  text-align: center;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+
+

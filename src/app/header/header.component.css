@@ -1,0 +1,16 @@
+.logo {
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.brand-name {
+  font-weight: 600;
+}
+
+.logo:hover {
+  background-color: #363636 !important;
+}

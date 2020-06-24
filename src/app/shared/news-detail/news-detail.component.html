@@ -1,0 +1,112 @@
+<br />
+<div *ngIf="isLoading" style="text-align: center;">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div class="columns detail" *ngIf="!isLoading">
+  <div class="column is-1"></div>
+  <div class="column is-7">
+    <div class="tile is-ancestor">
+      <div class="tile is-12">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p
+              class="title urdu"
+              style="text-align: right !important;"
+              *ngIf="onlyNews.language == 'Urdu'"
+            >
+              {{ onlyNews.newsSubject }}
+            </p>
+            <p class="title" *ngIf="onlyNews.language == 'English'">
+              {{ onlyNews.newsSubject }}
+            </p>
+            <p class="subtitle dates" *ngIf="onlyNews.language == 'Urdu'">
+              {{ onlyNews.date }}
+            </p>
+            <p class="subtitle date" *ngIf="onlyNews.language == 'English'">
+              {{ onlyNews.date }}
+            </p>
+            <figure class="image is-16by9 back">
+              <app-image-view
+                [type]="'large'"
+                [imageSrc]="onlyNews.ImagePath"
+                [loadingSrc]="'assets/svg/loading2.svg'"
+              ></app-image-view>
+            </figure>
+            <div
+              class="content"
+              style="text-align: left !important;"
+              *ngIf="onlyNews.language == 'English'"
+            >
+              <p class="mod-en">{{ onlyNews.newsDetail1 }}</p>
+              <br />
+              <p class="mod-en">{{ onlyNews.newsDetail2 }}</p>
+              <br />
+              <p class="mod-en">{{ onlyNews.newsDetail3 }}</p>
+            </div>
+
+            <div
+              class="content"
+              style="text-align: right !important;"
+              class="urdu"
+              *ngIf="onlyNews.language == 'Urdu'"
+            >
+              <p class="mod-urdu" style="margin-top: 25px;">
+                {{ onlyNews.newsDetail1 }}
+              </p>
+              <br />
+              <p class="mod-urdu">{{ onlyNews.newsDetail2 }}</p>
+              <br />
+              <p class="mod-urdu">{{ onlyNews.newsDetail3 }}</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column  is-multiline is-3">
+    <div class="tile is-ancestor">
+      <div class="tile is-12 is-vertical">
+        <div *ngIf="isLoadingOtherNews" style="text-align: center;">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+        <div *ngIf="!isLoadingOtherNews">
+          <div
+            class="card"
+            *ngFor="let item of relatedNews"
+            style="
+              margin-top: 12px;
+              border-radius: 5px !important;
+              margin-left: 10px;
+              margin-right: 10px;
+            "
+          >
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  style="border-radius: 5px;"
+                  src="{{ item[1].ImagePath }}"
+                  alt="Placeholder image"
+                />
+              </figure>
+            </div>
+            <div
+              class="card-content"
+              style="padding: 5px 0px; text-align: center;"
+            >
+              <div class="content" style="margin-top: -6px !important;">
+                {{ item[1].newsSubject }}
+                <br />
+                <time datetime="2016-1-1"
+                  >{{ item[1].date }} &nbsp;&nbsp;views:
+                  {{ item[1].views }}</time
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br />

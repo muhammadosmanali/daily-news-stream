@@ -1,0 +1,78 @@
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">Explore News</h1>
+      <div
+        class="dropdown"
+        (click)="onDropdown()"
+        [ngClass]="{ 'is-active': isActive }"
+      >
+        <div class="dropdown-trigger">
+          <button
+            class="button"
+            aria-haspopup="true"
+            aria-controls="dropdown-menu"
+          >
+            <span>Selected Category ({{ currentCategory }})</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i> </span
+            >&nbsp;
+            <progress
+              *ngIf="isLoading"
+              class="progress is-small is-primary"
+              max="200"
+              >45%</progress
+            >
+          </button>
+        </div>
+
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a
+              style="cursor: pointer;"
+              class="dropdown-item"
+              *ngFor="let item of categoryList"
+              (click)="onSelectCategory(item[1].category)"
+            >
+              {{ item[1].category }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section color">
+  <div class="container">
+    <!-- <h1 class="title" style="text-align: center !important;">Latest News &nbsp;<span class="explore">Explore More</span></h1>
+
+    <br> -->
+    <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div *ngIf="filteredNews.length == 0 && !isLoading">
+      <h1 style="text-align: center; font-size: 24px;">Sorry, No News found of {{currentCategory}} category.</h1>
+    </div>
+    <div *ngIf="filteredNews.length > 0">
+      <div class="columns is-multiline" *ngIf="!isLoading">
+        <div class="column is-one-quarter" *ngFor="let item of filteredNews" (click)="onNewsClick(item[0])">
+          <div class="card modify-card" data-aos="fade-left">
+            <div class="card-image">
+              <figure class="image is-3by2">
+                <app-image-view [type]="'small'" [imageSrc]="item[1].ImagePath"  [loadingSrc]="'assets/svg/loading.svg'"></app-image-view>
+              </figure>
+            </div>
+            <div class="card-content modify-card-content">
+              <div class="content">
+                {{ item[1].newsSubject }}
+                <br />
+                <time datetime="2016-1-1">{{ item[1].date }}</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
